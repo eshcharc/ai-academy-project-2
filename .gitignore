@@ -1,1 +1,4 @@
 .vscode
+wandb
+uploads
+__pycache__
