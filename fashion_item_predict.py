@@ -63,7 +63,13 @@ def upload_file():
             image = load_img(file_path, target_size=(28, 28), color_mode='grayscale')
             image = preprocess_image(image)
             prediction, percentage = predict_class(image)
-            return f'{prediction}({percentage})'
+            return f'''
+            <!doctype html>
+            <title>Fashion Item Prediction</title>
+            <div>
+                <span>{prediction}</span><span>({percentage})</span>
+            </div>
+            '''
 
     return f'''
     <!doctype html>
