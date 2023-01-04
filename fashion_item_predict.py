@@ -53,7 +53,7 @@ def upload_file():
         # If the user does not select a file, the browser submits an
         # empty file without a filename.
         if file.filename == '':
-            flash('No selected file')
+            # flash('No selected file')
             return redirect(request.url)
         if file and allowed_file(file.filename):
             filename = secure_filename(file.filename)
@@ -65,20 +65,100 @@ def upload_file():
             prediction, percentage = predict_class(image)
             return f'''
             <!doctype html>
-            <title>Fashion Item Prediction</title>
-            <div>
-                <span>{prediction}</span><span>({percentage})</span>
-            </div>
+            <html>
+                <head>
+                    <title>Fashion Item Prediction</title>
+                    <link rel="icon" type="image/ico" href="static/icon.ico">
+                    <style>
+                        .wrapper {{
+                            position: absolute;
+                            top: 0;
+                            bottom: 0;
+                            left: 0;
+                            right: 0;
+                            display: flex;
+                            justify-content: center;
+                            align-items: center;
+                        }}
+                        .panel {{
+                            border-radius: 10px;
+                            padding: 20px;
+                            background-color: #ffc30033;
+                            box-shadow: 1px 1px 7px #9e9e9e;
+                            user-select: none;
+                        }}
+                        .back_btn {{
+                            color: white;
+                            text-decoration: none;
+                            font-weight: bold;
+                            border: 1px solid grey;
+                            border-radius: 3px;
+                            padding: 3px 5px;
+                            background-color: #888;
+                            box-shadow: 4px 2px 7px #482e2e;
+                        }}
+
+                        .pred {{
+                            font-weight: bold;
+                        }}
+                    </style>
+                </head>
+                <body>
+                    <div class="wrapper">
+                        <div class="panel">
+                            <div>
+                                <span>My guess is: <span class="pred">{prediction}</span></span>&nbsp<span>(with {percentage} precision)</span>
+                            </div>
+                            <div style="margin-top: 20px;">
+                                <a href="/" class="back_btn">Try Again</a>
+                            </div>
+                        </div>
+                    </div>
+                </body>
+            </html>
             '''
 
     return f'''
     <!doctype html>
-    <title>Predict Fashion Item</title>
-    <h1>Upload New Picture</h1>
-    <form method=post enctype=multipart/form-data>
-      <input type=file name=file accept=".png, .jpg, .jpeg, .gif">
-      <input type=submit value=Upload>
-    </form>
+    <html>
+        <head>
+            <title>Predict Fashion Item</title>
+            <link rel="icon" type="image/ico" href="static/icon.ico">
+            <style>
+                .wrapper {{
+                    position: absolute;
+                    top: 0;
+                    bottom: 0;
+                    left: 0;
+                    right: 0;
+                    display: flex;
+                    justify-content: center;
+                    align-items: center;
+                }}
+
+                .panel {{
+                    border-radius: 10px;
+                    padding: 20px;
+                    background-color: #ffc30033;
+                    box-shadow: 1px 1px 7px #9e9e9e;
+                }}
+
+                h1 {{
+                    margin: 0 0 20px 0;
+                    color: #bb2020;
+                }}
+            </style>
+        </head>
+        <body class="wrapper">
+            <div class="panel">
+                <h1>Upload New Picture</h1>
+                <form method=post enctype=multipart/form-data>
+                    <input type=file name=file accept=".png, .jpg, .jpeg, .gif">
+                    <input type=submit value=Upload>
+                </form>
+            </div>
+        </body>
+    </html>
     '''
 
 app.run(host='0.0.0.0', debug=True)
