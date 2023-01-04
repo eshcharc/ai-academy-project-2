@@ -1,4 +1,5 @@
 .vscode
 wandb
 uploads
+hp_search
 __pycache__

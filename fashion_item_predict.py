@@ -113,7 +113,7 @@ def upload_file():
                                 <a href="/" class="back_btn">Try Again</a>
                             </div>
                         </div>
-                    </div>
+                    # </div>
                 </body>
             </html>
             '''
