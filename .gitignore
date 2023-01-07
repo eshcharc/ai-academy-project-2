@@ -2,4 +2,5 @@
 wandb
 uploads
 hp_search
+fashion_mnist.hd5
 __pycache__
