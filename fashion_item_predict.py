@@ -107,13 +107,13 @@ def upload_file():
                     <div class="wrapper">
                         <div class="panel">
                             <div>
-                                <span>My guess is: <span class="pred">{prediction}</span></span>&nbsp<span>(with {percentage} precision)</span>
+                                <span>My prediction is: <span class="pred">{prediction}</span></span>&nbsp<span>(with {percentage} precision)</span>
                             </div>
                             <div style="margin-top: 20px;">
                                 <a href="/" class="back_btn">Try Again</a>
                             </div>
                         </div>
-                    # </div>
+                    </div>
                 </body>
             </html>
             '''
