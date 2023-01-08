@@ -25,8 +25,10 @@ def preprocess_image(image):
 
 def predict_class(image):
     yhat = model.predict(image)
+    print(yhat)
     percentage = max(yhat[0])
     predict_index = np.argmax(yhat[0])
+    print(predict_index, class_names, yhat[0])
     prediction = class_names[predict_index]
     percentage = '%.2f%%' % (percentage*100)
     return prediction, percentage
@@ -53,7 +55,6 @@ def upload_file():
         # If the user does not select a file, the browser submits an
         # empty file without a filename.
         if file.filename == '':
-            # flash('No selected file')
             return redirect(request.url)
         if file and allowed_file(file.filename):
             filename = secure_filename(file.filename)
