@@ -1,1 +1,1 @@
-# ai-academy-project-2
+# AI Academy - Project 2
